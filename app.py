@@ -1,4 +1,4 @@
-import streamlit as st
+aimport streamlit as st
 import pandas as pd
 import joblib
 
@@ -10,10 +10,10 @@ model = joblib.load("model_pipeline.pkl")
 age = st.number_input("Umur", 10, 30, 20)
 gender = st.selectbox("Jenis Kelamin", ["Male", "Female"])
 academic_level = st.selectbox("Tingkat Pendidikan", ["High School", "Undergraduate", "Graduate"])
-usage = st.slider("Rata-rata Jam Pakai / Hari", 0.0, 12.0, 4.0)
+usage = st.slider("Rata-rata Penggunaan Sosmed (dalam jam) / Hari", 0.0, 12.0, 4.0)
 platform = st.selectbox("Platform Favorit", ["Facebook", "Instagram", "Twitter", "YouTube", "TikTok"])
-academic_effect = st.selectbox("Mempengaruhi Akademik?", ["Yes", "No"])
-sleep = st.slider("Jam Tidur / Malam", 0.0, 12.0, 6.0)
+academic_effect = st.selectbox("Menurut Anda, apakah penggunaan sosial media anda mempengaruhi akademik?", ["Yes", "No"])
+sleep = st.slider("Rata-rata total waktu tidur (dalam jam) / Hari", 0.0, 12.0, 6.0)
 mental_score = st.slider("Skor Kesehatan Mental", 1, 10, 5)
 relationship = st.selectbox("Status Hubungan", ["Single", "In Relationship", "Complicated"])
 conflict = st.slider("Konflik karena Sosmed", 0, 10, 2)
