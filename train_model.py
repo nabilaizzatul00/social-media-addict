@@ -28,11 +28,9 @@ numerical = X.select_dtypes(include=["int64", "float64"]).columns.tolist()
 cat_pipe = Pipeline([
     ("imputer", SimpleImputer(strategy="most_frequent")),
     ("encoder", OrdinalEncoder())])
-
 num_pipe = Pipeline([
     ("imputer", SimpleImputer(strategy="mean")),
     ("scaler", StandardScaler())])
-
 preprocessor = ColumnTransformer([
     ("cat", cat_pipe, categorical),
     ("num", num_pipe, numerical)])
