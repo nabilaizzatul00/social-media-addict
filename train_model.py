@@ -27,24 +27,20 @@ numerical = X.select_dtypes(include=["int64", "float64"]).columns.tolist()
 
 cat_pipe = Pipeline([
     ("imputer", SimpleImputer(strategy="most_frequent")),
-    ("encoder", OrdinalEncoder())
-])
+    ("encoder", OrdinalEncoder())])
 
 num_pipe = Pipeline([
     ("imputer", SimpleImputer(strategy="mean")),
-    ("scaler", StandardScaler())
-])
+    ("scaler", StandardScaler())])
 
 preprocessor = ColumnTransformer([
     ("cat", cat_pipe, categorical),
-    ("num", num_pipe, numerical)
-])
+    ("num", num_pipe, numerical)])
 
 # Final pipeline
 model = Pipeline([
     ("preprocessor", preprocessor),
-    ("regressor", RandomForestRegressor(random_state=42))
-])
+    ("regressor", RandomForestRegressor(random_state=42))])
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 model.fit(X_train, y_train)
